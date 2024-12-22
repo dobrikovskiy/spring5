@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Читатели библиотеки</title>
+</head>
+<body>
+<h1>Список читателей:</h1>
+<div th:if="${not #lists.isEmpty(people)}">
+    <ul>
+        <li th:each="person : ${people}" th:text="'Имя: ' + ${person.firstName} + ', Фамилия: ' + ${person.lastName} + ', Возраст: ' + ${person.age}"></li>
+    </ul>
+</div>
+<div th:if="${message != null}">
+    <span style="color: green;" th:text="${message}"></span>
+</div>
+<br><br>
+<form action="/add-person" method="post">
+    Имя: <input type="text" name="firstName"><br>
+    Фамилия: <input type="text" name="lastName"><br>
+    Возраст: <input type="number" name="age"><br>
+    <button type="submit">Добавить читателя</button>
+</form>
+</body>
+</html>
